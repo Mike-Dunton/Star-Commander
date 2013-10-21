@@ -31,7 +31,6 @@ include_once('./conn/db.php');
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-<div
 <form action="newUser.php" method="post">
     <label for="email">Email: </label>
     <input type="text" name="email">
