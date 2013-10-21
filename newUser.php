@@ -6,7 +6,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 if($method == 'POST'){
 //include the database
 include_once('./conn/db.php');
-    if( isset($_POST['email']) && isset($_POST['password']) ){
+    if( !empty($_POST['email']) && !empty($_POST['password']) ){
         $data = array(
             'email' => $_POST['email'],
             'password' => $_POST['password'],
@@ -26,7 +26,9 @@ include_once('./conn/db.php');
 		//something went wront with hashing
             	die();
 	    }
-        }
+        }else{
+		$err_NewUser = "Your information is bad and you should feel bad too";
+	}
     }
 
 }
@@ -37,6 +39,7 @@ include_once('./conn/db.php');
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
+<?php if(isset($err_NewUser)){echo "<p style='padding: 10px 10px; color:#FE2EE2E;'>" . $err_NewUser. "</p>";} ?>
 <form action="newUser.php" method="post">
     <label for="email">Email: </label>
     <input type="text" name="email">
