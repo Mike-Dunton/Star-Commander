@@ -7,19 +7,16 @@ if($method == 'POST'){
 //include the database
 include_once('./conn/db.php');
     if(isset($_POST['username']) && isset($_POST['password']))){
-        $email = $_POST['email'];
-        $email2 = $_POST['email2'];
-        $password = $_POST['password'];
-        $password2 = $_POST['password2'];
-        $ip = getIpAsInt();
 
-        if( $email === $email2 && $password === $password2 ){
+        $data = array(
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'ip' => getIpAsInt());
+
+        if( $data['email'] == $_POST['email2'] && $data['password'] == $_POST['password2'] ){
             $insert = $dbh->prepare("INSERT INTO `StarCommand`.`user`(`email`, `password`, `ip_last_login`) 
                                                             VALUES (':email', ':password', ':ip');");
-            $insert->bindParam(':email', $email, PDO::PARAM_STR); //<-- Automatically sanitized by PDO
-            $insert->bindParam(':password', $password, PDO::PARAM_STR);
-            $insert->bindParam(':ip', $ip, PDO::PARAM_INT);
-            $insert->execute();
+            $insert->execute($data);
             $dbh = null;
             header("Location: index.php");
             die();
