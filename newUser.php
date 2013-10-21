@@ -6,20 +6,26 @@ $method = $_SERVER['REQUEST_METHOD'];
 if($method == 'POST'){
 //include the database
 include_once('./conn/db.php');
-    if( isset($_POST['username']) && isset($_POST['password']) ){
+    if( isset($_POST['email']) && isset($_POST['password']) ){
         $data = array(
             'email' => $_POST['email'],
             'password' => $_POST['password'],
             'ip' => getIpAsInt());
 
-        if( $data['email'] == $_POST['email2'] && $data['password'] == $_POST['password2'] ){
-            $insert = $dbh->prepare("INSERT INTO `StarCommand`.`user`(`email`, `password`, `ip_last_login`) 
-                                                            VALUES (':email', ':password', ':ip');");
-            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT); 
-            $insert->execute($data);
-            $dbh = null;
-            header("Location: index.php");
-            die();
+        if( $_POST['email'] == $_POST['email2'] && $_POST['password'] == $_POST['password2'] ){
+            $insert = $dbh->prepare("INSERT INTO user (email, password, ip_last_login) 
+                                               VALUES (:email, :password, :ip)");
+            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+	    if(password_verify($_POST['password'], $data['password'])) {
+		
+            	$insert->execute($data);
+            	$dbh = null;
+            	header("Location: index.php");
+		die();
+	    }else { 
+		//something went wront with hashing
+            	die();
+	    }
         }
     }
 
