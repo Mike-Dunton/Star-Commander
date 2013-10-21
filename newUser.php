@@ -41,6 +41,6 @@ include_once('./conn/db.php');
     <input type="password" name="password">
     <label for="password2">Confirm Password:</label>
     <input type="password" name="password2">
-    <label for
+    <input type="submit">
 </form>
 </body>
