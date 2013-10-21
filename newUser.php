@@ -25,7 +25,11 @@ include_once('./conn/db.php');
 
 }
 ?>
-
+<html>
+<head>
+    <title>New user</title>
+</head>
+<body>
 <form action="newUser.php" method="post">
     <label for="email">Email: </label>
     <input type="text" name="email">
@@ -36,3 +40,4 @@ include_once('./conn/db.php');
     <label for="password2">Confirm Password:</label>
     <input type="password" name="password2">
 </form>
+</body>
