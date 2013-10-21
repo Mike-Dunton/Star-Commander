@@ -1,6 +1,6 @@
 <?php
-include_once('./includes/helpers.php');
-
+require('./includes/helpers.php');
+require('./includes/password.php');
 $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'POST'){
@@ -15,6 +15,7 @@ include_once('./conn/db.php');
         if( $data['email'] == $_POST['email2'] && $data['password'] == $_POST['password2'] ){
             $insert = $dbh->prepare("INSERT INTO `StarCommand`.`user`(`email`, `password`, `ip_last_login`) 
                                                             VALUES (':email', ':password', ':ip');");
+            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT); 
             $insert->execute($data);
             $dbh = null;
             header("Location: index.php");
@@ -27,8 +28,10 @@ include_once('./conn/db.php');
 <html>
 <head>
     <title>New user</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
+<div
 <form action="newUser.php" method="post">
     <label for="email">Email: </label>
     <input type="text" name="email">
@@ -38,5 +41,6 @@ include_once('./conn/db.php');
     <input type="password" name="password">
     <label for="password2">Confirm Password:</label>
     <input type="password" name="password2">
+    <label for
 </form>
 </body>
