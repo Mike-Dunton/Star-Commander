@@ -6,8 +6,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 if($method == 'POST'){
 //include the database
 include_once('./conn/db.php');
-    if(isset($_POST['username']) && isset($_POST['password']))){
-
+    if( isset($_POST['username']) && isset($_POST['password']) ){
         $data = array(
             'email' => $_POST['email'],
             'password' => $_POST['password'],
