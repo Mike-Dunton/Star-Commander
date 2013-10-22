@@ -13,22 +13,21 @@ include_once('./conn/db.php');
             'ip' => getIpAsInt());
 
         if( $_POST['email'] == $_POST['email2'] && $_POST['password'] == $_POST['password2'] ){
-            $insert = $dbh->prepare("INSERT INTO user (email, password, ip_last_login) 
+            $insert = $dbh->prepare("INSERT INTO user (email, password, ip_last_login)
                                                VALUES (:email, :password, :ip)");
             $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
-	    if(password_verify($_POST['password'], $data['password'])) {
-		
-            	$insert->execute($data);
-            	$dbh = null;
-            	header("Location: index.php");
-		die();
-	    }else { 
-		//something went wront with hashing
-            	die();
-	    }
+        if(password_verify($_POST['password'], $data['password'])) {
+                $insert->execute($data);
+                $dbh = null;
+                header("Location: index.php");
+        die();
+        }else {
+        //something went wront with hashing
+                die();
+        }
         }else{
-		$err_NewUser = "Your information is bad and you should feel bad too";
-	}
+        $err_NewUser = "Your information is bad and you should feel bad too";
+    }
     }
 
 }
