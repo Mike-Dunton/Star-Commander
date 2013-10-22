@@ -34,19 +34,19 @@ $users = $dbh->query('SELECT * FROM user');
                 $(this).next().slideToggle(400);
             });
     </script>
-<ul id="navigation">
-    <li class="first"><a href="#">Home</a></li>
+        <div class="content">
+ <ul id="navigation">
+    <li class="firstItem"><a href="#">Home</a></li>
     <li><a href="#">Home</a></li>
     <li><a href="#">Fleet</a></li>
     <li><a href="#">Discussion Board</a></li>
     <li><a href="#">Who is Online</a></li>
     <li><a href="#">Politics</a></li>
     <li><a href="#">Justice</a></li>
-    <li><a href="#">Entertainment</a></li>
-</ul>
+    <li class="lastItem"><a href="#">Entertainment</a></li>
+</ul><br /><br />
 
-        <div class="content">
-            <?php
+           <?php
             foreach($users as $row){
 		echo "<p>";
                 print $row["email"]. " - ". $row["password"]." - ".getIpAsString($row["ip_last_login"])."</p>";

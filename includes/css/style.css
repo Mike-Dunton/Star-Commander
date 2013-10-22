@@ -62,19 +62,13 @@ body {
 .content p {
   padding: 5 5 5 5;
 }
-.header {
-    position: relative;
-    width:100%;
-    top:35px;
-    height:200px;
-    background-color:#31353D;
-}
+
 #navigation {
     font-family: verdana;
     width:100%;
     font-size: 14px;
     list-style: none;
-    background:#212225;
+    background-color:#212225;
 }
 
 #navigation li {
@@ -103,6 +97,6 @@ body {
 }
 
 #navigation a:hover{
-    background: #2A2307;
+    background-color: #2A2307;
     text-decoration: underline;
 }
