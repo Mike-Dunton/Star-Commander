@@ -63,22 +63,22 @@ body {
   padding: 5 5 5 5;
 }
 
-#navigation {
-    font-family: verdana;
+.navigation {
     width:100%;
-    font-size: 14px;
-    list-style: none;
     background-color:#212225;
 }
-
-#navigation li {
+.navigation ul {
+    list-style: none;  
+}
+.navigation li {
     float:left;
+    background-color: #DCD7BF;
     border-right: solid 1px #212225;    
     height: 35px;
 }
 
-#navigation li a:link, #navigation li a:visited {
-    color: #DCD7BF;
+.navigation li a:link, .navigation li a:visited {
+    color: #2A2307;
     text-decoration: none;
     display:block;
     height: 35px;
