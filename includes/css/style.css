@@ -4,7 +4,7 @@ body, p {
 }
 
 
-.containter {
+.container {
     position: relative;
     width: 80%;
     height:210px;
@@ -21,7 +21,7 @@ body, p {
     height: 25px;
     line-height: 25px;
     background-color: #808080;
-    text-align:center;
+    text-align:right;
     cursor: pointer;
 }
 
@@ -37,4 +37,11 @@ body, p {
     height: auto;
     display:none;
     background-color:#cccccc;
+}
+.content {
+    position: relative;
+    width:100%;
+    top:25px;
+    left:0;
+    height:auto;
 }
