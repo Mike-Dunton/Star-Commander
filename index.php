@@ -13,10 +13,10 @@ $users = $dbh->query('SELECT * FROM user');
 </head>
 <body>
     <div class="container">
-        <div class="login_container">
-            <p>Login Here</p>
+        <div class="top_Bar">
+            <p>Login</p>
         </div>
-        <div class="login_extended">
+        <div class="login">
             <form action="login.php" method="post">
                <p> Email:
                 <input type="text" name="email" /> </p>
@@ -26,7 +26,7 @@ $users = $dbh->query('SELECT * FROM user');
             </form></p>
         </div>
     <script type="text/javascript">
-        $(".login_container").click(
+        $(".top_Bar").click(
             function(){
                 $(this).next().slideToggle(400);
             },
@@ -34,6 +34,17 @@ $users = $dbh->query('SELECT * FROM user');
                 $(this).next().slideToggle(400);
             });
     </script>
+<ul id="navigation">
+    <li class="first"><a href="#">Home</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Fleet</a></li>
+    <li><a href="#">Discussion Board</a></li>
+    <li><a href="#">Who is Online</a></li>
+    <li><a href="#">Politics</a></li>
+    <li><a href="#">Justice</a></li>
+    <li><a href="#">Entertainment</a></li>
+</ul>
+
         <div class="content">
             <?php
             foreach($users as $row){
