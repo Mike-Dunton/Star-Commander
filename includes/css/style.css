@@ -63,21 +63,22 @@ body {
   padding: 5 5 5 5;
 }
 
-.navigation {
+#navigation {
     width:100%;
-    background-color:#212225;
+    background-color:#DCD7BF;
 }
-.navigation ul {
-    list-style: none;  
+#navigation ul {
+    height:auto;
+    padding: 8px 0px;
+    margin: 0px;
 }
-.navigation li {
-    float:left;
-    background-color: #DCD7BF;
+#navigation li {
+    display: inline;
     border-right: solid 1px #212225;    
-    height: 35px;
+    padding 20px;
 }
 
-.navigation li a:link, .navigation li a:visited {
+#navigation li a:link, #navigation li a:visited {
     color: #2A2307;
     text-decoration: none;
     display:block;
