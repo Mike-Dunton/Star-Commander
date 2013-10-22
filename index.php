@@ -17,7 +17,7 @@ $users = $dbh->query('SELECT * FROM user');
             <p>Login Here</p>
         </div>
         <div class="login_extended">
-            <form>
+            <form action="login.php" method="post">
                 Email:
                 <input type="text" name="email" /> <br/>
                 Password:
