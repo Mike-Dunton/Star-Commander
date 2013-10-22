@@ -1,8 +1,11 @@
 body, p {
     margin:0px;
     padding:0px;
-    background-color:#31353D;
-    color:#92CDCF;
+}
+
+body {
+    background-color:#1c1d21;
+    color:#EEEFF7;
 }
 
 
@@ -14,6 +17,7 @@ body, p {
     background-color:#EEEFF7;
     border: 3em solid #EEEFF7;
     border-width: 0 3em;
+    margin:0 auto;
 }
 
 .login_container {
@@ -36,6 +40,7 @@ body, p {
 
 .login_extended {
     position: absolute;
+    z-index:1000;
     right:0px;
     top:25px;
     width:350px;
@@ -43,11 +48,16 @@ body, p {
     display:none;
     background-color:#31353D;
 }
+.login_extended p {
+   padding: 5px 5px;
+}
 .content {
     position: relative;
     width:100%;
     top:35px;
-    left:5px;
     height:auto;
     background-color:#31353D;
+}
+.content p {
+  padding: 5 5 5 5;
 }

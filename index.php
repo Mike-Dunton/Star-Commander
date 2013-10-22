@@ -18,12 +18,12 @@ $users = $dbh->query('SELECT * FROM user');
         </div>
         <div class="login_extended">
             <form action="login.php" method="post">
-                Email:
-                <input type="text" name="email" /> <br/>
-                Password:
-                <input type="password" name="password" /> <br />
+               <p> Email:
+                <input type="text" name="email" /> </p>
+               <p> Password:
+                <input type="password" name="password" /> </p>
                 <input type="submit" /><br />
-            </form>
+            </form></p>
         </div>
     <script type="text/javascript">
         $(".login_container").click(
@@ -37,9 +37,10 @@ $users = $dbh->query('SELECT * FROM user');
         <div class="content">
             <?php
             foreach($users as $row){
-                print $row["email"]. " - ". $row["password"]." - ".getIpAsString($row["ip_last_login"])."<br />";
+		echo "<p>";
+                print $row["email"]. " - ". $row["password"]." - ".getIpAsString($row["ip_last_login"])."</p>";
             }
-            echo "<a href='newUser.php'>Add New user</a>";
+            echo "<p><a href='newUser.php'>Add New user</a></p>";
             //close the database
             $dbh = null;
 
