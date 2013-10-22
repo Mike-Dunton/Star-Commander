@@ -20,19 +20,21 @@ body, p {
     width: 100%;
     height: 25px;
     line-height: 25px;
-    background-color: #808080;
+    background-color: #cccccc;
     text-align:right;
     cursor: pointer;
 }
 
 .login_container p {
     color:#ffffff;
+    padding-right:5px;
     text-shadow: -1px 2px 3px #000;
 }
 
 .login_extended {
     position: absolute;
     right:0px;
+    top:25px;
     width:350px;
     height: auto;
     display:none;
@@ -42,6 +44,6 @@ body, p {
     position: relative;
     width:100%;
     top:25px;
-    left:0;
+    left:5px;
     height:auto;
 }

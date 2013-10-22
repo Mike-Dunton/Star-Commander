@@ -25,7 +25,6 @@ $users = $dbh->query('SELECT * FROM user');
                 <input type="submit" /><br />
             </form>
         </div>
-    </div>
     <script type="text/javascript">
         $(".login_container").click(
             function(){
@@ -35,16 +34,17 @@ $users = $dbh->query('SELECT * FROM user');
                 $(this).next().slideToggle(400);
             });
     </script>
-    <div class="content">
-        <?php
-        foreach($users as $row){
-            print $row["email"]. " - ". $row["password"]." - ".getIpAsString($row["ip_last_login"])."<br />";
-        }
-        echo "<a href='newUser.php'>Add New user</a>";
-        //close the database
-        $dbh = null;
+        <div class="content">
+            <?php
+            foreach($users as $row){
+                print $row["email"]. " - ". $row["password"]." - ".getIpAsString($row["ip_last_login"])."<br />";
+            }
+            echo "<a href='newUser.php'>Add New user</a>";
+            //close the database
+            $dbh = null;
 
-        ?>
+            ?>
+        </div>
     </div>
 </body>
 </html>
