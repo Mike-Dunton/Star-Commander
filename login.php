@@ -15,11 +15,11 @@ if($method == 'POST'){
             $select = $dbh->prepare("SELECT email, password, ip_last_login
                                     FROM user
                                     WHERE email = :email LIMIT 1");
-            $select->bindParam(':email', $data['email', PDO::PARAM_STR]);
+            $select->bindParam(':email', $data['email'] , PDO::PARAM_STR);
             $select->execute();
             $result = $select->fetch(PDO::FETCH_ASSOC);
 
-        if(password_verify($data[$data['password'], $result['password'])){
+        if(password_verify($data['password'], $result['password'])){
             echo "You did it!";
             /*header("Location: index.php");
             die();*/
@@ -28,7 +28,6 @@ if($method == 'POST'){
         }
     }else
     {
-
         $err_Login = "Please fill out the form.";
     }
 
