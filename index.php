@@ -31,7 +31,7 @@ if(isset($_SESSION['id'])){
             <form action="login.php" method="post">
                <label>Email:</label><input type="text" name="email" />
                 <label>Password:</label><input type="password" name="password" /><br />
-                <label>&nbsp; </label><input style="align:center" type="submit" /><br />
+                <label>&nbsp; </label><input value="Login" style="align:center" type="submit" /><br />
             </form></p>
         </div>
                 <div class="header">
@@ -48,13 +48,13 @@ if(isset($_SESSION['id'])){
     </script>
  <div class="content">
      <div id="navigation">
-        <li class="firstItem"><a href="#">Home</a></li>
         <li><a href="#">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="#">Fleet</a></li>
         <li><a href="#">Discussion Board</a></li>
         <li><a href="#">Who is Online</a></li>
         <li><a href="#">Politics</a></li>
-        <li class="lastItem"><a href="#">Justice</a></li>
+        <li><a href="#">Justice</a></li>
     </div>
            
         </div>
