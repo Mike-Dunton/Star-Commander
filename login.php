@@ -13,13 +13,18 @@ if($method == 'POST'){
             'password' => $_POST['password'],
             'ip' => getIpAsInt());
 
-        $user = new User($data);
-        }else {
-            $err_Login = "Incorrect Username or Password.";
-        }
+            $user = new User($data);
+            if($user->email === false){
+               /*$err_Login = "Incorrect Username or Password.";*/
+               echo "NOPE";
+            }else {
+                if(!isset($_SESSION)) { session_start(); }
+                $_SESSION['id'] = $user->userID;
+                header("Location: index.php");
+            }
     }else
     {
-        $err_Login = "Please fill out the form.";
+        header("Location: index.php");
     }
 
 }

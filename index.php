@@ -5,7 +5,8 @@ include_once('./conn/db.php');
 include_once('./includes/helpers.php');
 include_once('./includes/session.php');
 include_once('./classes/user.php');
-$user = new User(array('id' => 4));
+if(isset($_SESSION['id'])){
+    $user = new User(array('id' => $_SESSION['id']));}
 ?>
 <html>
 <head>
@@ -16,14 +17,14 @@ $user = new User(array('id' => 4));
 <body>
     <div class="container">
         <div class="top_Bar">
-            <?php /*if(isset($user->email) )
-                   {*/ 
+            <?php if(isset($_SESSION['id']) )
+                   { 
                      echo ("<p>Welcome ". $user->email. " ");
-                  //}
-                   /*else
+                  }
+                   else
                    { 
                     echo "<p>Login</p>" ;
-                }*/ ?>
+                } ?>
         </div>
         <div class="login">
             <form action="login.php" method="post">
