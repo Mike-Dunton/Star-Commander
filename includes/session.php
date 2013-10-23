@@ -18,7 +18,8 @@ switch ($pageType) {
 			header("Location: ../login.php" );
 		}
 		break;
-
+	case 'all':
+		break;
 	default:
 		header("Location: ../404.php" );
 		break;

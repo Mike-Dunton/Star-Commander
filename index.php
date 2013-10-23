@@ -1,9 +1,11 @@
 <?php
+$pageType = 'all';
 //include the database
 include_once('./conn/db.php');
 include_once('./includes/helpers.php');
-
-$users = $dbh->query('SELECT * FROM user');
+include_once('./includes/session.php');
+include_once('./classes/user.php');
+$user = new User(array('id' => 4));
 ?>
 <html>
 <head>
@@ -14,7 +16,14 @@ $users = $dbh->query('SELECT * FROM user');
 <body>
     <div class="container">
         <div class="top_Bar">
-            <p>Login</p>
+            <?php /*if(isset($user->email) )
+                   {*/ 
+                     echo ("<p>Welcome ". $user->email. " ");
+                  //}
+                   /*else
+                   { 
+                    echo "<p>Login</p>" ;
+                }*/ ?>
         </div>
         <div class="login">
             <form action="login.php" method="post">
@@ -42,19 +51,12 @@ $users = $dbh->query('SELECT * FROM user');
         <li><a href="#">Discussion Board</a></li>
         <li><a href="#">Who is Online</a></li>
         <li><a href="#">Politics</a></li>
-        <li><a href="#">Justice</a></li>
-        <li class="lastItem"><a href="#">Entertainment</a></li>
-    <div>
-           <?php
-            foreach($users as $row){
-		echo "<p>";
-                print $row["email"]. " - ". $row["password"]." - ".getIpAsString($row["ip_last_login"])."</p>";
-            }
-            echo "<p><a href='newUser.php'>Add New user</a></p>";
-            //close the database
-            $dbh = null;
-
-            ?>
+        <li class="lastItem"><a href="#">Justice</a></li>
+    </div>
+           
+        </div>
+        <div class="footer">
+            <p>Copyright Michael Dunton 2013</p>
         </div>
     </div>
 </body>

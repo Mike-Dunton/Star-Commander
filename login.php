@@ -1,6 +1,7 @@
 <?php
 require('./includes/helpers.php');
 require('./includes/password.php');
+require('./classes/user.php');
 $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'POST'){
@@ -12,17 +13,7 @@ if($method == 'POST'){
             'password' => $_POST['password'],
             'ip' => getIpAsInt());
 
-            $select = $dbh->prepare("SELECT email, password, ip_last_login
-                                    FROM user
-                                    WHERE email = :email LIMIT 1");
-            $select->bindParam(':email', $data['email'] , PDO::PARAM_STR);
-            $select->execute();
-            $result = $select->fetch(PDO::FETCH_ASSOC);
-
-        if(password_verify($data['password'], $result['password'])){
-            echo "You did it!";
-            /*header("Location: index.php");
-            die();*/
+        $user = new User($data);
         }else {
             $err_Login = "Incorrect Username or Password.";
         }
