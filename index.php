@@ -27,13 +27,15 @@ if(isset($_SESSION['id'])){
                 } ?>
         </div>
         <div class="login">
+        <br />
             <form action="login.php" method="post">
-               <p> Email:
-                <input type="text" name="email" /> </p>
-               <p> Password:
-                <input type="password" name="password" /> </p>
-                <input type="submit" /><br />
+               <label>Email:</label><input type="text" name="email" />
+                <label>Password:</label><input type="password" name="password" /><br />
+                <label>&nbsp; </label><input style="align:center" type="submit" /><br />
             </form></p>
+        </div>
+                <div class="header">
+        <p>Space Commander</p>
         </div>
     <script type="text/javascript">
         $(".top_Bar").click(
@@ -57,7 +59,7 @@ if(isset($_SESSION['id'])){
            
         </div>
         <div class="footer">
-            <p>Copyright Michael Dunton 2013</p>
+            <p>Copyright 2013 Michael Dunton. All rights reserved.</p>
         </div>
     </div>
 </body>
