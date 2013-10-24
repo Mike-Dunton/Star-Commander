@@ -83,9 +83,17 @@ body {
 .login br{
     clear:left;
 }
-}
+
 .login p {
    padding: 5px 5px;
+}
+.login a:link,  .login a:visited {
+    color: #fff;
+    text-decoration: none;
+    display:inline;
+}
+.login a:hover {
+    text-decoration:underline;
 }
 .content {
     position: relative;

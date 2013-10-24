@@ -27,15 +27,19 @@ if(isset($_SESSION['id'])){
                 } ?>
         </div>
         <div class="login">
+        <?php if(isset($_SESSION['id']) ){ ?>
+	    <br /><label>&nbsp;</label><a href="logout.php">Logout</a><br /><br />
+	<?php }else {?> 
         <br />
             <form action="login.php" method="post">
                <label>Email:</label><input type="text" name="email" />
                 <label>Password:</label><input type="password" name="password" /><br />
                 <label>&nbsp; </label><input value="Login" style="align:center" type="submit" /><br />
-            </form></p>
+            </form>
+	<?php } ?>
         </div>
-                <div class="header">
-        <p>Space Commander</p>
+        <div class="header">
+            <p>Space Commander</p>
         </div>
     <script type="text/javascript">
         $(".top_Bar").click(
@@ -53,8 +57,7 @@ if(isset($_SESSION['id'])){
         <li><a href="#">Fleet</a></li>
         <li><a href="#">Discussion Board</a></li>
         <li><a href="#">Who is Online</a></li>
-        <li><a href="#">Politics</a></li>
-        <li><a href="#">Justice</a></li>
+        <li><a href="#">Commander's Log</a></li>
     </div>
            
         </div>
