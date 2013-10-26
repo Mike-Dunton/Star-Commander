@@ -1,4 +1,4 @@
-body, p {
+body, p, h1, h2, h3, hr, ul, li {
     margin:0px;
     padding:0px;
 }
@@ -50,7 +50,6 @@ body {
 .header p {
     color:#C9CDD5;
     font-size: 40px;
-    font-family: Verdana;
 }
 
 .login {
@@ -157,15 +156,24 @@ body {
 .innerContent {
     width:90%;
     height:700px;
+    margin: 0 auto;
 }
 
 .innerContent h1 {
   display: block;
-  float: left;
   color:#C9CDD5;
-  font-family: Verdana, Helvetica, sans-serif;
-  font-size: 3.0em;
+  font-size: 2.3em;
   line-height: 66px;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   font-weight: bold;
+}
+.innerContent h3 {
+  display: block;
+  color:#C9CDD5;
+  font-size: 1.25em;
+  line-height: 45px;
+  margin-bottom: 2px;
+}
+.innerContent ul {
+  margin-left:25px;
 }

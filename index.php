@@ -12,15 +12,14 @@ include_once('./classes/user.php');
     <?php include_once('navigation.php'); ?>
     <div class="innerContent">
         <h1>News</h1>
+	<hr>
         <h3>10/25/2013 Update</h3>
-        <p>
             <ul>
                 <li>Color Scheme</li>
                 <li>CSS!</li>
                 <li>User Login and Logout</li>
                 <li>Fleet is in progress</li>
             </ul>
-        </p>
     </div>
  </div>
 
