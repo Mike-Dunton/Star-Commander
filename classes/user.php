@@ -1,7 +1,4 @@
-<?php 
-//require('./../conn/db.php');
-//require('./../includes/helpers.php');
-//require('../../includes/password.php');
+<?php
 
 class User
 {
@@ -18,7 +15,9 @@ class User
             $this->loadByCreds($data);
         }
     }
-
+    /*
+    *   Load the user obect by username//password
+    */
     private  function loadByCreds( $credentials )
     {
         $dbh = dbHandler::getConnection();
@@ -37,8 +36,10 @@ class User
         }
 
     }
-
-    private function loadByID( $id ) 
+    /*
+    *   Load the user obect by user_id
+    */
+    private function loadByID( $id )
     {
         $dbh = dbHandler::getConnection();
 
@@ -46,7 +47,7 @@ class User
         $this->fill( $row->fetch(PDO::FETCH_ASSOC) );
     }
 
-    private function fill( $row ) 
+    private function fill( $row )
     {
         $this->userID = $row['user_id'];
         $this->email = $row['email'];
