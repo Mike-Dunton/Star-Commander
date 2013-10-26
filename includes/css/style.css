@@ -133,7 +133,7 @@ body {
 #navigation ul {
     height:auto;
 }
-#navigation li {   
+#navigation li {
     list-style-type: none;
     display:inline-block;
 }
@@ -152,4 +152,20 @@ body {
 #navigation li a:hover{
     color: #19121F;
     background-color: #080609;
+}
+
+.innerContent {
+    width:90%;
+    height:700px;
+}
+
+.innerContent h1 {
+  display: block;
+  float: left;
+  color:#C9CDD5;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 3.0em;
+  line-height: 66px;
+  margin-bottom: 7px;
+  font-weight: bold;
 }
