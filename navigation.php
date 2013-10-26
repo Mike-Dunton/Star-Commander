@@ -1,6 +1,5 @@
 
      <div id="navigation">
-        <li><a href="#">Home</a></li>
         <li><a href="index.php">Home</a></li>
         <li><a href="#">Fleet</a></li>
         <li><a href="#">Discussion Board</a></li>

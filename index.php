@@ -5,6 +5,7 @@ include_once('./conn/db.php');
 include_once('./includes/helpers.php');
 include_once('./includes/session.php');
 include_once('./classes/user.php');
+?>
 
 <?php include_once('header.php'); ?>
  <div class="content">
