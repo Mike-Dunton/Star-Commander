@@ -2,9 +2,9 @@
 
 class Fleet
 {
-    public $fleetID;
-    public $name;
-    private $credits;
+    private $FleetID;
+    private $Name;
+    private $Credits;
 
     public function __construct($id)
     {
@@ -32,10 +32,27 @@ class Fleet
         $update = $dbh->_dbh->prepare( 'UPDATE fleet
                                         SET credits = credits + :numCredits
                                         WHERE user_id = :id');
-        $update->execute(array("numCredits" => $numCredits,"id" => $fleetID));
+        $update->execute(array("numCredits" => $numCredits,"id" => $FleetID));
 
         //Update the Fleet information
-        this->loadByID($fleetID);
+        this->loadByID($FleetID);
+    }
+
+    public function setName($newName)
+    {
+        $this->Name = $newName;	
+    }
+    public function getName()
+    {
+        return $this->Name;
+    }
+    public function setCredits($newCredits)
+    {
+        $this->Credits = $newCredits; 
+    }
+    public function getCredits()
+    {
+        return $this->Credits;
     }
 
     /*
@@ -43,8 +60,10 @@ class Fleet
     */
     private function fill( $row )
     {
-        $this->fleetID = $row['fleet_id'];
-        $this->name = $row['name'];
-        $this->credits = $row['credits'];
+        $this->FleetID = $row['fleet_id'];
+        $this->Name = $row['name'];
+        $this->Credits = $row['credits'];
     }
+
+
 }
