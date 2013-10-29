@@ -94,6 +94,34 @@ body {
 .login a:hover {
     text-decoration:underline;
 }
+
+.registration {
+    position: relative;
+    z-index:999;
+    width:350px;
+    height: auto;
+    margin:0 auto;
+    display:none;
+
+    border-style:solid;
+    border-width:medium;
+    border-top:0;
+}
+.registration label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 125px;
+    text-align: right;
+}
+.registration input {
+  display: inline-block;
+  float: left;
+}
+.registration br{
+    clear:left;
+}
+
 .content {
     position: relative;
     width:100%;

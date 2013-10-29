@@ -36,9 +36,11 @@ include_once('./conn/db.php');
 <head>
     <title>New user</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="./includes/css/style.css" />
 </head>
 <body>
 <?php if(isset($err_NewUser)){echo "<p style='padding: 10px 10px; color:#FE2EE2E;'>" . $err_NewUser. "</p>";} ?>
+<div class="registration">
 <form action="newUser.php" method="post">
     <label for="email">Email: </label>
     <input type="text" name="email">
@@ -50,4 +52,5 @@ include_once('./conn/db.php');
     <input type="password" name="password2">
     <input type="submit">
 </form>
+</div>
 </body>
