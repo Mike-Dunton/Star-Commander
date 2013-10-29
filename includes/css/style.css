@@ -156,13 +156,16 @@ body {
     height: 25px;
     text-align: center;
     font-size: 20px;
+    white-space: nowrap;
 }
 #navigation ul {
     height:auto;
+
 }
 #navigation li {
     list-style-type: none;
     display:inline-block;
+
 }
 
 #navigation li a:link, #navigation li a:visited {
@@ -170,7 +173,7 @@ body {
     color: #fff;
     text-decoration: none;
     display:inline;
-    height: 25px;
+    height: 27px;
     padding: 0 12px;
     text-transform: uppercase;
 }

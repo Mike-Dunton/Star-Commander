@@ -21,6 +21,5 @@ include_once('./classes/user.php');
                 <li>Fleet is in progress</li>
             </ul>
     </div>
- </div>
 
 <?php include_once('footer.php');?>

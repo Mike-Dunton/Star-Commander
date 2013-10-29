@@ -2,16 +2,19 @@
 
 class Fleet
 {
+    
     /**
      * Holds the ID related to the entry in the database
      * @var [int]
      */
     private $FleetID;
+    
     /**
      * Name of the Fleet
      * @var [string]
      */
     private $Name;
+    
     /**
      * The amount of in game currancy held in this object
      * @var [int]
@@ -24,7 +27,7 @@ class Fleet
      */
     public function __construct($id)
     {
-        loadByID($id);
+        $this->loadByID($id);
     }
 
     /**
@@ -34,7 +37,6 @@ class Fleet
     private function loadByID( $id )
     {
         $dbh = dbHandler::getConnection();
-
         $row = $dbh->_dbh->query('SELECT * FROM fleet WHERE user_id = ' .$id);
         $this->fill( $row->fetch(PDO::FETCH_ASSOC) );
     }
@@ -47,6 +49,7 @@ class Fleet
     {
         $this->Credits = $this->Credits + $numCredits;
     }
+
     /**
      * Set the name of the fleet
      * @param [String] $newName
@@ -55,6 +58,7 @@ class Fleet
     {
         $this->Name = $newName;
     }
+
     /**
      * Get the name of the fleet
      * @return [string]
@@ -63,6 +67,7 @@ class Fleet
     {
         return $this->Name;
     }
+
     /**
      * sets the number of credits
      * @param [int] $newCredits
@@ -71,6 +76,7 @@ class Fleet
     {
         $this->Credits = $newCredits;
     }
+
     /**
      * Get the number of credits
      * @return [int]
@@ -90,6 +96,7 @@ class Fleet
         $this->Name = $row['name'];
         $this->Credits = $row['credits'];
     }
+
     /**
      * Get the objects data as an array
      * @return [Array]
@@ -98,8 +105,9 @@ class Fleet
     {
         return array("credits" => $this->Credits,
                      "name" => $this->Name,
-                     "id" => $FleetID);
+                     "id" => $this->FleetID);
     }
+
     /**
      * persist the object data to the database.
      */
@@ -109,11 +117,11 @@ class Fleet
 
         $update = $dbh->_dbh->prepare( 'UPDATE fleet
                                         SET credits = :credits, name = :name
-                                        WHERE user_id = :id');
+                                        WHERE fleet_id = :id');
         $update->execute($this->toArray());
 
         //Update the Fleet information
-        this->loadByID($this->FleetID);
+        $this->loadByID($this->FleetID);
     }
 
 }

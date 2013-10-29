@@ -93,6 +93,24 @@ class Ship
         return $this->Name;
     }
 
+    public function getCoorX()
+    {
+        return $this->coor_x;
+    }
+
+    public function setCoorX($value)
+    {
+        $this->coor_x = $value;
+    }
+    public function getCoorY()
+    {
+        return $this->coor_y;
+    }
+
+    public function setCoorY($value)
+    {
+        $this->coor_y = $value;
+    }
      /**
      * Takes an array of data and sets the objects data.
      * @param  [Array] $row
@@ -143,7 +161,7 @@ class Ship
                                         WHERE ship_id = :shipID');
         $update->execute($this->toArray());
 
-        this->loadByID($this->shipID);
+        $this->loadByID($this->shipID);
     }
 
 }

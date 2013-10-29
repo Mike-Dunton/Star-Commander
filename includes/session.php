@@ -8,14 +8,14 @@ switch ($pageType) {
 	case 'admin':
 		if ( ! isset($_SESSION['Admin']) &&  $_SESSION['Admin'] != true)
 		{
-			header("Location: ../login.php"  );
+			header("Location: ./logout.php"  );
 		}
 		break;
 	
 	case 'player':
 		if ( ! isset($_SESSION['Player']) &&  $_SESSION['Player'] != true)
 		{
-			header("Location: ../login.php" );
+			header("Location: ./logout.php" );
 		}
 		break;
 	case 'all':

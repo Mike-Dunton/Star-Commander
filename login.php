@@ -15,15 +15,16 @@ if($method == 'POST'){
 
             $user = new User($data);
             if($user->email === false){
-               header("Location: index.php");
+               header("Location: ./index.php");
             }else {
                 if(!isset($_SESSION)) { session_start(); }
                 $_SESSION['id'] = $user->userID;
-                header("Location: index.php");
+                $_SESSION['player'] = true;
+                header("Location: ./index.php");
             }
     }else
     {
-        header("Location: index.php");
+        header("Location: ./index.php");
     }
 
 }
