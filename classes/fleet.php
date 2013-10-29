@@ -86,6 +86,14 @@ class Fleet
         return $this->Credits;
     }
 
+    public function getShips()
+    {
+        $dbh = dbHandler::getConnection();
+        $stmn = $dbh->_dbh->prepare('SELECT * FROM ship WHERE fleet_id = :id');
+        $stmn->execute(array("id" => $this->FleetID));
+        return $stmn->fetchAll(PDO::FETCH_ASSOC);
+    } 
+
     /**
      * Takes an array of data and sets the objects data.
      * @param  [Array] $row

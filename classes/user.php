@@ -43,7 +43,8 @@ class User
     {
         $dbh = dbHandler::getConnection();
 
-        $row = $dbh->_dbh->query('SELECT * FROM user WHERE user_id = ' .$id);
+        $row = $dbh->_dbh->prepare('SELECT * FROM user WHERE user_id = :id');
+        $row->execute(array("id" => $id));
         $this->fill( $row->fetch(PDO::FETCH_ASSOC) );
     }
 

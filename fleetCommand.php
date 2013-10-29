@@ -17,9 +17,17 @@ include_once('./classes/ship.php');
     <div class="innerContent">
     <p> <?php echo $fleet->getName(); ?> </p>
     <p> <?php echo $fleet->getCredits(); ?> </p>
-    <?php  $fleet->addToCredits(25); ?>
-    <p> <?php echo $fleet->getCredits(); ?> </p>
-    <?php  $fleet->persist(); ?>
+    <?php $ships = $fleet->getShips(); ?>
+ <?php
+    foreach ($ships as $row){
+    print "<br>";
+    foreach ($row as $key => $val){
+        print "<p>$key - $val</p>";
+    }
+}
+?>
+
+ 
     
     </div>
-<?php include_once('footer.php');
+<?php include_once('footer.php'); ?>
