@@ -71,7 +71,8 @@ class Ship
     {
         $dbh = dbHandler::getConnection();
 
-        $row = $dbh->_dbh->query('SELECT * FROM ship WHERE ship_id = ' .$id);
+        $row = $dbh->_dbh->prepare('SELECT * FROM ship WHERE ship_id = :id');
+        $row->execute(array("id" => $id));
         $this->fill( $row->fetch(PDO::FETCH_ASSOC) );
     }
 
@@ -93,24 +94,71 @@ class Ship
         return $this->Name;
     }
 
+    /**
+     * Get the x Coor of a ship
+     * @return [int] the x coor of a ship
+     */
     public function getCoorX()
     {
         return $this->coor_x;
     }
 
+    /**
+     * Set the x coor of a ship
+     * @param [int] $value  The value to be set
+     */
     public function setCoorX($value)
     {
         $this->coor_x = $value;
     }
+
+    /**
+     * Get the y coor of a ship
+     * @return [int] Get the Y coor of a ship
+     */
     public function getCoorY()
     {
         return $this->coor_y;
     }
 
+    /**
+     * Set the y Coor of a ship
+     * @param [int] $value The value of the new y Coor
+     */
     public function setCoorY($value)
     {
         $this->coor_y = $value;
     }
+
+    /**
+     * Get all of the actions a ship can do
+     * @return [array] Returns an array of all the possible actions
+     */
+    private function getShipActions()
+    {
+        $dbh = dbHandler::getConnection();
+        $select = $dbh->_dbh->prepare( 'select sA.action_id, sA.name, sA.description, sA.value
+                                        FROM shipActions sAs
+                                        JOIN shipAction sA ON sAs.action_id = sA.action_id
+                                        WHERE sAs.class_id = :classID' );
+        $select->execute(array("classID" => $this->classID));
+        return $select->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Get the class of a ship
+     * @return [array] [an assoc array of the class properties]
+     */
+    private function getShipClass()
+    {
+        $dbh = dbHandler::getConnection();
+        $select = $dbh->_dbh->prepare( 'select *
+                                        FROM shipClass
+                                        WHERE class_id = :classID' );
+        $select->execute(array("classID" => $this->classID));
+        return $select->fetchAll(PDO::FETCH_ASSOC);
+    }
+
      /**
      * Takes an array of data and sets the objects data.
      * @param  [Array] $row
