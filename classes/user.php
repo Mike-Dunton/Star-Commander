@@ -31,6 +31,8 @@ class User
         if(password_verify($credentials['password'], $row['password']))
         {
             $this->fill($row);
+            $this->online(true);
+            $this->updateIP();
         }else {
             $this->fill(array("user_id" => false, "email" => false));
         }
@@ -46,6 +48,30 @@ class User
         $row = $dbh->_dbh->prepare('SELECT * FROM user WHERE user_id = :id');
         $row->execute(array("id" => $id));
         $this->fill( $row->fetch(PDO::FETCH_ASSOC) );
+    }
+
+    public function online($value)
+    {
+        $dbh = dbHandler::getConnection();
+        $update = $dbh->_dbh->prepare("UPDATE user 
+                                       SET online = :value
+                                       WHERE user_id = :id");
+        
+        $update->execute(array('value' => $value, 
+               'id' => $this->userID));
+
+    }
+
+    private function updateIP()
+    {
+        $dbh = dbHandler::getConnection();
+        $ip = getIpAsInt();
+        $update = $dbh->_dbh->prepare("UPDATE user 
+                                       SET ip = :value
+                                       WHERE user_id = :id");
+        
+        $update->execute(array('value' => $ip, 
+               'id' => $this->userID));
     }
 
     private function fill( $row )
