@@ -5,8 +5,16 @@ if(isset($_SESSION['id'])){
 <html>
 <head>
     <title>Home Page</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" href="./includes/css/style.css" />
+  <link rel="stylesheet" href="./includes/css/jquery-ui-1.10.3.custom.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  
+
+    <script type="text/javascript">
+        $(function() {
+            $("#accordion").accordion();
+        });
+    </script>
 </head>
 <body>
     <div class="container">

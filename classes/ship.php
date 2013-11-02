@@ -60,14 +60,14 @@ class Ship
      */
     public function __construct($id)
     {
-        loadByID($id);
+        $this->loadByID($id);
     }
 
     /**
      * Loads the ship by ship ID
      * @param [int] $id
      */
-    private function loadByID( $id )
+    private function loadByID($id)
     {
         $dbh = dbHandler::getConnection();
 
@@ -134,7 +134,7 @@ class Ship
      * Get all of the actions a ship can do
      * @return [array] Returns an array of all the possible actions
      */
-    private function getShipActions()
+    public function getShipActions()
     {
         $dbh = dbHandler::getConnection();
         $select = $dbh->_dbh->prepare( 'select sA.action_id, sA.name, sA.description, sA.value
@@ -149,7 +149,7 @@ class Ship
      * Get the class of a ship
      * @return [array] [an assoc array of the class properties]
      */
-    private function getShipClass()
+    public function getShipClass()
     {
         $dbh = dbHandler::getConnection();
         $select = $dbh->_dbh->prepare( 'select *
