@@ -82,7 +82,7 @@ class Ship
      */
     public function setName($newName)
     {
-        $this->nName = $newName;
+        $this->name = $newName;
     }
 
     /**
@@ -91,7 +91,7 @@ class Ship
      */
     public function getName()
     {
-        return $this->Name;
+        return $this->name;
     }
 
     /**
@@ -156,7 +156,7 @@ class Ship
                                         FROM shipClass
                                         WHERE class_id = :classID' );
         $select->execute(array("classID" => $this->classID));
-        return $select->fetchAll(PDO::FETCH_ASSOC);
+        return $select->fetch(PDO::FETCH_ASSOC);
     }
 
      /**

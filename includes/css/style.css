@@ -5,7 +5,7 @@ body, p, h1, h2, h3, hr, ul, li {
 
 body {
     background-color:#111C1E;
-    color:#2C5773;
+    color:#fff;
 }
 
 
@@ -204,6 +204,13 @@ body {
   font-size: 1.25em;
   line-height: 45px;
   margin-bottom: 2px;
+}
+.innerContent h4 {
+    display:inline;
+    color:#2C5773;
+    font-size:1.15em;
+    line-height: 30px;
+    font-weight: bold;
 }
 .innerContent ul {
   margin-left:25px;
