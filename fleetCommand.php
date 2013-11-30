@@ -38,7 +38,7 @@ include_once('header.php'); ?>
             } ?>
         </ul>
         </div>
-        <div style="float:left">
+        <div>
             <?php
                     if(isset($_GET['action']) && isset($_GET['ship']) && is_numeric($_GET['ship']) && $_GET['ship'] == $userShip->shipID )
                 {
@@ -46,9 +46,13 @@ include_once('header.php'); ?>
                     switch($_GET['action']) {
                         case 'scan' :
                            $results = $shipInAction->scan();
+                           echo"<ul>";
                            foreach ($results as $value) {
-                               var_dump($value);
+                                foreach($value as $row){
+                                    echo"<li>". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']."</li>".;
+                                }
                            }
+                           echo"</ul>";
                             break;
                         case 'move':
 
