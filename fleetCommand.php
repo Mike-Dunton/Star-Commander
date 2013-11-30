@@ -38,19 +38,19 @@ include_once('header.php'); ?>
             } ?>
         </ul>
         </div>
-        <div id="actionResults">
-            <span id="actionResultsSpan">Results</span>
+        <div class="actionResults">
             <?php
-                    if(isset($_GET['action']) && isset($_GET['ship']) && is_numeric($_GET['ship']) && $_GET['ship'] == $userShip->shipID )
+                if(isset($_GET['action']) && isset($_GET['ship']) && is_numeric($_GET['ship']) && $_GET['ship'] == $userShip->shipID )
                 {
                     $shipInAction = new Ship(htmlentities($_GET['ship']));
                     switch($_GET['action']) {
                         case 'scan' :
+                           echo "<span class='actionResultsSpan'>Scan Results</span>";
                            $results = $shipInAction->scan();
                            echo"<ul>";
                            foreach ($results as $value) {
                                 foreach($value as $row){
-                                    echo"<li>". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']."</li>".;
+                                    echo"<li>". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']."</li>";
                                 }
                            }
                            echo"</ul>";

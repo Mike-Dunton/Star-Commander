@@ -216,13 +216,15 @@ body {
   margin-left:25px;
 }
 
-.actionResults div {
+.actionResults{
+    margin-top:18px;
     border:1px solid;
-    padding:10px
+    border-color:#fff;
+    padding:5px
 }
-.actionResultspan {
+.actionResultsSpan {
 display:inline:block;
 position:relative;
 top:-20px;
-background-color:#fff;
+background-color:#000;
 }
