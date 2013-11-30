@@ -172,10 +172,10 @@ class Ship
                                         AND so.coor_y <= :maxY
                                         AND so.coor_y >= :minY' );
         $select->execute(array("solarID" => $this->solarID,
-                               "maxX"    => $thix->coor_x+10,
-                               "minX"    => $thix->coor_x-10,
-                               "maxY"    => $thix->coor_y+10,
-                               "minY"    => $thix->coor_y-10,
+                               "maxX"    => $this->coor_x+10,
+                               "minX"    => $this->coor_x-10,
+                               "maxY"    => $this->coor_y+10,
+                               "minY"    => $this->coor_y-10,
                                )
                         );
         $stelarObjects = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -189,17 +189,17 @@ class Ship
                                         AND s.coor_y <= :maxY
                                         AND s.coor_y >= :minY' );
         $select->execute(array("solarID" => $this->solarID,
-                               "maxX"    => $thix->coor_x+10,
-                               "minX"    => $thix->coor_x-10,
-                               "maxY"    => $thix->coor_y+10,
-                               "minY"    => $thix->coor_y-10,
+                               "maxX"    => $this->coor_x+10,
+                               "minX"    => $this->coor_x-10,
+                               "maxY"    => $this->coor_y+10,
+                               "minY"    => $this->coor_y-10,
                                )
                         );
         $ships = $select->fetchAll(PDO::FETCH_ASSOC);
 
         $scanResults['stelarObjects'] = $stelarObjects;
         $scanResults['ships'] = $ships;
-        return $scanResults
+        return $scanResults;
     }
 
      /**

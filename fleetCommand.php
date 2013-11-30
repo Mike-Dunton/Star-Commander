@@ -29,6 +29,7 @@ include_once('header.php'); ?>
                 <?php echo $userShip->getName(). " - <i>". $userShipClass['name']. " Class</i>"; ?>
             </h3>
         <div>
+        <div>
             <?php
             echo "Ship Location:(".$userShip->getCoorX().",".$userShip->getCoorY().")";
             echo "<br>Actions <ul>";
@@ -37,27 +38,27 @@ include_once('header.php'); ?>
             } ?>
         </ul>
         </div>
-        <div>
+        <div style="float:left">
             <?php
-                if(isset($_GET['action'] && isset($_GET['ship']) && is_numeric($_GET['ship']))
+                    if(isset($_GET['action']) && isset($_GET['ship']) && is_numeric($_GET['ship']) && $_GET['ship'] == $userShip->shipID )
                 {
-                    $shipInAction = new Ship(htmlentities($_get['ship']))
+                    $shipInAction = new Ship(htmlentities($_GET['ship']));
                     switch($_GET['action']) {
                         case 'scan' :
                            $results = $shipInAction->scan();
                            foreach ($results as $value) {
-                               echo $value. "<br>";
+                               var_dump($value);
                            }
                             break;
                         case 'move':
 
                             break;
-                        default
                     }
                 }
 
             ?>
         </div>
+</div>
     <?php  } ?>
 
 
