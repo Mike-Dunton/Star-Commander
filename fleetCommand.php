@@ -38,7 +38,8 @@ include_once('header.php'); ?>
             } ?>
         </ul>
         </div>
-        <div>
+        <div id="actionResults">
+            <span id="actionResultsSpan">Results</span>
             <?php
                     if(isset($_GET['action']) && isset($_GET['ship']) && is_numeric($_GET['ship']) && $_GET['ship'] == $userShip->shipID )
                 {

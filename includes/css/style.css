@@ -215,3 +215,14 @@ body {
 .innerContent ul {
   margin-left:25px;
 }
+
+.actionResults div {
+    border:1px solid;
+    padding:10px
+}
+.actionResultspan {
+display:inline:block;
+position:relative;
+top:-20px;
+background-color:#fff;
+}
