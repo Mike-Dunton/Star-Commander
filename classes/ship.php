@@ -6,7 +6,7 @@ class Ship
      * Holds the ID related to the entry in the database
      * @var [int]
      */
-    private $shipID;
+    public $shipID;
 
     /**
      * Holds the ID of the related fleet in the database

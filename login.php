@@ -19,7 +19,7 @@ if($method == 'POST'){
             }else {
                 if(!isset($_SESSION)) { session_start(); }
                 $_SESSION['id'] = $user->userID;
-                $_SESSION['player'] = true;
+                $_SESSION['Player'] = true;
                 header("Location: ./index.php");
             }
     }else

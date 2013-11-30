@@ -33,7 +33,7 @@ include_once('header.php'); ?>
             echo "Ship Location:(".$userShip->getCoorX().",".$userShip->getCoorY().")";
             echo "<br>Actions <ul>";
             foreach($userShip->getShipActions() as $actions){
-                echo "<li>". .tolower($actions['name']). "</li>";
+                echo "<li><a href=fleetCommand.php?ship=".$userShip->shipID."&action=".$actions['name'].">" .$actions['name']."</a></li>";
             } ?>
         </ul>
         </div>
