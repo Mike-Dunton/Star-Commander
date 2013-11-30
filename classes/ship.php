@@ -159,6 +159,18 @@ class Ship
         return $select->fetch(PDO::FETCH_ASSOC);
     }
 
+
+    public function scan()
+    {
+        $dbh = dbHandler::getConnection();
+        $select = $dbh->_dbh->prepare( 'select sA.action_id, sA.name, sA.description, sA.value
+                                        FROM shipActions sAs
+                                        JOIN shipAction sA ON sAs.action_id = sA.action_id
+                                        WHERE sAs.class_id = :classID' );
+        $select->execute(array("classID" => $this->classID));
+        return $select->fetchAll(PDO::FETCH_ASSOC);
+    }
+
      /**
      * Takes an array of data and sets the objects data.
      * @param  [Array] $row
