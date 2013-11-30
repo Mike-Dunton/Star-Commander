@@ -28,14 +28,35 @@ include_once('header.php'); ?>
             <h3>
                 <?php echo $userShip->getName(). " - <i>". $userShipClass['name']. " Class</i>"; ?>
             </h3>
-            <div>
-<?php
+        <div>
+            <?php
             echo "Ship Location:(".$userShip->getCoorX().",".$userShip->getCoorY().")";
             echo "<br>Actions <ul>";
             foreach($userShip->getShipActions() as $actions){
                 echo "<li><a href=fleetCommand.php?ship=".$userShip->shipID."&action=".$actions['name'].">" .$actions['name']."</a></li>";
             } ?>
         </ul>
+        </div>
+        <div>
+            <?php
+                if(isset($_GET['action'] && isset($_GET['ship']) && is_numeric($_GET['ship']))
+                {
+                    $shipInAction = new Ship(htmlentities($_get['ship']))
+                    switch($_GET['action']) {
+                        case 'scan' :
+                           $results = $shipInAction->scan();
+                           foreach ($results as $value) {
+                               echo $value. "<br>";
+                           }
+                            break;
+                        case 'move':
+
+                            break;
+                        default
+                    }
+                }
+
+            ?>
         </div>
     <?php  } ?>
 

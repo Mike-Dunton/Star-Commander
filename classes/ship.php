@@ -163,12 +163,43 @@ class Ship
     public function scan()
     {
         $dbh = dbHandler::getConnection();
-        $select = $dbh->_dbh->prepare( 'select sA.action_id, sA.name, sA.description, sA.value
-                                        FROM shipActions sAs
-                                        JOIN shipAction sA ON sAs.action_id = sA.action_id
-                                        WHERE sAs.class_id = :classID' );
-        $select->execute(array("classID" => $this->classID));
-        return $select->fetchAll(PDO::FETCH_ASSOC);
+        $select = $dbh->_dbh->prepare( 'select ss.span_x, ss.span_y, so.name, so.stellar_id, so.coor_x, so.coor_y
+                                        FROM solarSystem ss
+                                        JOIN stellarObject so ON ss.solar_id = so.solar_id
+                                        WHERE ss.solar_id = :solarID
+                                        AND so.coor_x <= :maxX
+                                        AND so.coor_x >= :minX
+                                        AND so.coor_y <= :maxY
+                                        AND so.coor_y >= :minY' );
+        $select->execute(array("solarID" => $this->solarID,
+                               "maxX"    => $thix->coor_x+10,
+                               "minX"    => $thix->coor_x-10,
+                               "maxY"    => $thix->coor_y+10,
+                               "minY"    => $thix->coor_y-10,
+                               )
+                        );
+        $stelarObjects = $select->fetchAll(PDO::FETCH_ASSOC);
+
+        $select = $dbh->_dbh->prepare( 'select ss.span_x, ss.span_y, so.name, so.stellar_id, so.coor_x, so.coor_y
+                                        FROM solarSystem ss
+                                        JOIN ship s ON ss.solar_id = s.solar_id
+                                        WHERE ss.solar_id = :solarID
+                                        AND s.coor_x <= :maxX
+                                        AND s.coor_x >= :minX
+                                        AND s.coor_y <= :maxY
+                                        AND s.coor_y >= :minY' );
+        $select->execute(array("solarID" => $this->solarID,
+                               "maxX"    => $thix->coor_x+10,
+                               "minX"    => $thix->coor_x-10,
+                               "maxY"    => $thix->coor_y+10,
+                               "minY"    => $thix->coor_y-10,
+                               )
+                        );
+        $ships = $select->fetchAll(PDO::FETCH_ASSOC);
+
+        $scanResults['stelarObjects'] = $stelarObjects;
+        $scanResults['ships'] = $ships;
+        return $scanResults
     }
 
      /**
