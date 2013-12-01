@@ -170,7 +170,7 @@ class Ship
         $dbh = dbHandler::getConnection();
         $select = $dbh->_dbh->prepare( 'select so.name, so.stellar_id, so.coor_x, so.coor_y, sos.name AS stellarName
                                         FROM stellarObject so
-                                        JOIN stellarObjects sos ON so.type.id = sos.type_id
+                                        JOIN stellarObjects sos ON so.type_id = sos.type_id
                                         WHERE so.solar_id = :solarID
                                         AND so.coor_x <= :maxX
                                         AND so.coor_x >= :minX

@@ -10,7 +10,7 @@ include_once('./classes/ship.php');
 
 
 include_once('header.php');
-<?php $fleet = new Fleet($user->userID); ?>
+$fleet = new Fleet($user->userID); ?>
  <div class="content">
     <?php include_once('navigation.php'); ?>
     <div class="innerContent">
@@ -49,7 +49,7 @@ include_once('header.php');
                            $results = $shipInAction->scan();
                           echo"<ul>";
                            foreach($results as $row){
-                               if(array_key_exist('ship_id', $row))
+                               if(array_key_exists('ship_id', $row))
                                 echo"<li> Ship: ". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']." Class: ".$row["className"] ."</li>";
                                else
                                 echo"<li> Stellar Object: ". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']." Type: ".$row["stellarName"]."</li>";
