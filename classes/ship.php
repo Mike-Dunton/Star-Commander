@@ -168,8 +168,9 @@ class Ship
     public function scan()
     {
         $dbh = dbHandler::getConnection();
-        $select = $dbh->_dbh->prepare( 'select so.name, so.stellar_id, so.coor_x, so.coor_y
+        $select = $dbh->_dbh->prepare( 'select so.name, so.stellar_id, so.coor_x, so.coor_y, sos.name AS stellarName
                                         FROM stellarObject so
+                                        JOIN stellarObjects sos ON so.type.id = sos.type_id
                                         WHERE so.solar_id = :solarID
                                         AND so.coor_x <= :maxX
                                         AND so.coor_x >= :minX
@@ -184,8 +185,9 @@ class Ship
                         );
         $stelarObjects = $select->fetchAll(PDO::FETCH_ASSOC);
 
-        $select2 = $dbh->_dbh->prepare( 'select s.ship_id, s.name, s.coor_x, s.coor_y
+        $select2 = $dbh->_dbh->prepare( 'select s.ship_id, s.name, s.coor_x, s.coor_y, sC.name AS className
                                         FROM ship s
+                                        JOIN shipClass sC ON s.class_id = sC.class_id
                                         WHERE s.solar_id = :solarID
                                         AND s.coor_x <= :maxX
                                         AND s.coor_x >= :minX
@@ -197,7 +199,7 @@ class Ship
                                "maxY"    => $this->coor_y+10,
                                "minY"    => $this->coor_y-10,
                                )
-         
+
                         );
         $ships = $select2->fetchAll(PDO::FETCH_ASSOC);
 
