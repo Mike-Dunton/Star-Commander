@@ -47,6 +47,9 @@ include_once('header.php'); ?>
                         case 'scan' :
                            echo "<span class='actionResultsSpan'>Scan Results</span>";
                            $results = $shipInAction->scan();
+                           echo "<pre>";
+                           var_dump($results);
+                           echo"</pre>;"
                            echo"<ul>";
                          //  foreach ($results as $value) {
                                 foreach($results as $row){
