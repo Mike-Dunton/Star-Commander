@@ -179,7 +179,7 @@ class Ship
                         );
         $stelarObjects = $select->fetchAll(PDO::FETCH_ASSOC);
 
-        $select = $dbh->_dbh->prepare( 'select s.name, s.coor_x, s.coor_y
+        $select = $dbh->_dbh->prepare( 'select, s.ship_id, s.name, s.coor_x, s.coor_y
                                         FROM ship s
                                         WHERE s.solar_id = :solarID
                                         AND s.coor_x <= :maxX
@@ -195,8 +195,8 @@ class Ship
                         );
         $ships = $select->fetchAll(PDO::FETCH_ASSOC);
 
-        $scanResults['stelarObjects'] = $stelarObjects;
-        $scanResults['ships'] = $ships;
+        $scanResults = array_merge($stelarObjects, $ships);
+
         return $scanResults;
     }
 
@@ -252,5 +252,29 @@ class Ship
 
         $this->loadByID($this->shipID);
     }
+
+    /*public function printMap()
+    {
+        $scanResults = $this->scan();
+
+        for($x=$this->coor_x-10; $x<$this->coor_x+10; $x++) {
+            for($y=$this->coor_x-10; $y<$this->coor_x+10; $y++) {
+                if($scanResults == 1){
+                    echo "<span style='color:yellow; display:block; float:left'>" . $scanResults ."</span>";
+                }elseif($scanResults == 2){
+                    echo "<span style='color:green; display:block; float:left'>" . $scanResults ."</span>";
+                }elseif($scanResults == 3){
+                    echo "<span style='color:aqua; display:block; float:left'>" . $scanResults ."</span>";
+                }elseif($scanResults == 4){
+                    echo "<span style='color:azure; display:block; float:left'>" . $scanResults ."</span>";
+                }elseif($scanResults == 5){
+                    echo "<span style='color:fuchsia; display:block; float:left'>" . $scanResults ."</span>";
+                }else {
+                    echo "<span style='color:white; display:block; float:left'>" . $scanResults. "</span>";
+                }
+            }
+        print "<br style='clear:both>'";
+        }
+    }*/
 
 }
