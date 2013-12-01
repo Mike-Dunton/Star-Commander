@@ -200,7 +200,7 @@ class Ship
                         );
         $ships = $select2->fetchAll(PDO::FETCH_ASSOC);
 
-        $scanResults = array_merge($stelarObjects, $ships);
+        $scanResults = array_merge($ships, $stelarObjects);
 
         return $scanResults;
     }
