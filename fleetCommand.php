@@ -47,15 +47,13 @@ include_once('header.php'); ?>
                         case 'scan' :
                            echo "<span class='actionResultsSpan'>Scan Results</span>";
                            $results = $shipInAction->scan();
-                           echo "<pre>";
-                           var_dump($results);
-                           echo"</pre>;"
-                           echo"<ul>";
-                         //  foreach ($results as $value) {
-                                foreach($results as $row){
-                                    echo"<li>". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']."</li>";
+                          echo"<ul>";
+                           foreach($results as $row){
+                                   if(array_key_exist('ship_id')
+                                           echo"<li> Ship: ". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']."</li>";
+                                   else
+                                           echo"<li> Stelar Object: ". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']."</li>";
                                 }
-                          // }
                            echo"</ul>";
                             break;
                         case 'move':

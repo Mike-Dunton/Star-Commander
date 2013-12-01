@@ -184,7 +184,7 @@ class Ship
                         );
         $stelarObjects = $select->fetchAll(PDO::FETCH_ASSOC);
 
-        $select2 = $dbh->_dbh->prepare( 'select, s.ship_id, s.name, s.coor_x, s.coor_y
+        $select2 = $dbh->_dbh->prepare( 'select s.ship_id, s.name, s.coor_x, s.coor_y
                                         FROM ship s
                                         WHERE s.solar_id = :solarID
                                         AND s.coor_x <= :maxX
@@ -197,6 +197,7 @@ class Ship
                                "maxY"    => $this->coor_y+10,
                                "minY"    => $this->coor_y-10,
                                )
+         
                         );
         $ships = $select2->fetchAll(PDO::FETCH_ASSOC);
 
