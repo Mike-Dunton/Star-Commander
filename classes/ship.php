@@ -130,6 +130,11 @@ class Ship
         $this->coor_y = $value;
     }
 
+    public function getSolarID()
+    {
+        return $this->solarID;
+    }
+
     /**
      * Get all of the actions a ship can do
      * @return [array] Returns an array of all the possible actions
@@ -179,21 +184,21 @@ class Ship
                         );
         $stelarObjects = $select->fetchAll(PDO::FETCH_ASSOC);
 
-        $select = $dbh->_dbh->prepare( 'select, s.ship_id, s.name, s.coor_x, s.coor_y
+        $select2 = $dbh->_dbh->prepare( 'select, s.ship_id, s.name, s.coor_x, s.coor_y
                                         FROM ship s
                                         WHERE s.solar_id = :solarID
                                         AND s.coor_x <= :maxX
                                         AND s.coor_x >= :minX
                                         AND s.coor_y <= :maxY
                                         AND s.coor_y >= :minY' );
-        $select->execute(array("solarID" => $this->solarID,
+        $select2->execute(array("solarID" => $this->solarID,
                                "maxX"    => $this->coor_x+10,
                                "minX"    => $this->coor_x-10,
                                "maxY"    => $this->coor_y+10,
                                "minY"    => $this->coor_y-10,
                                )
                         );
-        $ships = $select->fetchAll(PDO::FETCH_ASSOC);
+        $ships = $select2->fetchAll(PDO::FETCH_ASSOC);
 
         $scanResults = array_merge($stelarObjects, $ships);
 

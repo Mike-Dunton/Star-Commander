@@ -31,7 +31,7 @@ include_once('header.php'); ?>
         <div>
         <div>
             <?php
-            echo "Ship Location:(".$userShip->getCoorX().",".$userShip->getCoorY().")";
+            echo "Ship Location:(".$userShip->getCoorX().",".$userShip->getCoorY().") In the Solar System ". $userShip->getSolarID();
             echo "<br>Actions <ul>";
             foreach($userShip->getShipActions() as $actions){
                 echo "<li><a href=fleetCommand.php?ship=".$userShip->shipID."&action=".$actions['name'].">" .$actions['name']."</a></li>";
@@ -48,11 +48,11 @@ include_once('header.php'); ?>
                            echo "<span class='actionResultsSpan'>Scan Results</span>";
                            $results = $shipInAction->scan();
                            echo"<ul>";
-                           foreach ($results as $value) {
-                                foreach($value as $row){
+                         //  foreach ($results as $value) {
+                                foreach($results as $row){
                                     echo"<li>". $row['name']." | ".$row['coor_x']." | ".$row['coor_y']."</li>";
                                 }
-                           }
+                          // }
                            echo"</ul>";
                             break;
                         case 'move':
