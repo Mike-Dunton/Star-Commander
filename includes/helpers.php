@@ -18,4 +18,18 @@ function getIpAsString($ip)
 {
     return long2ip($ip);
 }
+
+function showOnlineUsers()
+{
+  $dbh = dbHandler::getConnection();
+  $select = $dbh->_dbh->prepare("SELECT email, dt_joined
+                               FROM user
+                               WHERE online = 1");
+  $select->execute();
+  $result = $select->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach($result as $row)
+    echo "User: ". $row['email']. "is online and has been a member since ". $row['dt_joined'];
+
+}
 ?>
