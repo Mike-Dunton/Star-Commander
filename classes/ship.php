@@ -164,7 +164,10 @@ class Ship
         return $select->fetch(PDO::FETCH_ASSOC);
     }
 
-
+    /**
+     * Scans the nearby area for any objects
+     * @return [array] an assoc array of all the nearby objects
+     */
     public function scan()
     {
         $dbh = dbHandler::getConnection();
@@ -206,6 +209,25 @@ class Ship
         $scanResults = array_merge($ships, $stelarObjects);
 
         return $scanResults;
+    }
+
+    /**
+     * The Move function updates the coorx and coory of a ship
+     * MUST CALL THE PERSIST function after calling this.
+     * @param  [type] $coor_x  [the x coor]
+     * @param  [type] $coor_y  [the y coor]
+     * @param  [type] $solarID [the solar system]
+     * @return [type]          [true if possible false if not]
+     */
+    public function move($coor_x, $coor_y)
+    {
+        if($coor_x >= $this->coor_x-10 && $coor_x <= $this->coor_x+10 && $coor_y >= $this->coor_y-10 && $coor_y <= $this->coor_y+10)
+        {
+            $this->coor_x = $coor_x;
+            $this->coor_y = $coor_y;
+            return true;
+        }
+        return false;
     }
 
      /**

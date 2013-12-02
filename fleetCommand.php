@@ -57,7 +57,28 @@ $fleet = new Fleet($user->userID); ?>
                            echo"</ul>";
                             break;
                         case 'move':
+                          if(isset($_GET['coor_x']) && isset($_GET['coor_y']))
+                          {
+                            echo "<span class='actionResultsSpan'>Move Results</span>";
+                            if($userShip->move($_GET['coor_x'], $_GET['coor_y']))
+                            {
+                              $userShip->persist();
+                              echo "Ship moved to: " .$userShip->getCoorX().",".$userShip->getCoorY();
+                            }else {
+                              echo "Out of range ship did not move";
+                            }
+                          }else {
 
+                            ?>
+                            <form action="fleetCommand.php" method="get">
+                            coor_x <input type="text" name="coor_x"><br>
+                            coor_y:<input type="text" name="coor_y"><br>
+                            <input type="hidden" name="action" value="move">
+                            <input type="submit">
+                            </form>
+
+                            <?php
+                        }
                             break;
                     }
                 }
